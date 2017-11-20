@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Dotinstall学習時間計算機</title>
+</head>
+<body>
+
+  <header>Dotinstall学習時間計算機</header>
+
+  <div id="myapp">
+    <div id="inputfield-container">
+      <div class="container-title">入力エリア</div>
+      <input type="text" maxlength=50 placeholder="レッスンタイトルを入力（任意）" v-model="lesson_title">
+      <input type="text" pattern="\d*" maxlength="3" placeholder="レッスン数を入力" v-model="lesson_num" @keyup="calc_time">
+    </div>
+
+    <div id="timetable-container">
+      <div class="container-title">タイムテーブル</div>
+      <table>
+        <tr>
+          <th>周回</th>
+          <th>時間</th>
+        </tr>
+        <tr v-for="lesson in lessons">
+          <td>{{ lesson.info }}</td>
+          <td>{{ lesson.time }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="copyboard-container">
+      <div class="container-title">コピペ用</div>
+      <div id="copyboard">
+        <span v-if="lesson_title">## {{ lesson_title }}</span>
+        <ul>
+          <li v-for="lesson in lessons">- [ ] {{ lesson.info }} | {{ lesson.time }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="vue.js"></script>
+</body>
+</html>
