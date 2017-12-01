@@ -4,7 +4,7 @@ var vm  = new Vue({
     lesson_num: null,
     lesson_title: null,
     lessons: [],
-    circumference: [10, 7, 5, 3, 3]
+    circumference: [7, 5, 4, 3, 2]
   },
   methods: {
     calc_time: function() {
